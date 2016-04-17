@@ -31,7 +31,14 @@ dependencies {
 }
 */
 
+def dockerHome = "."
+
 task dockerBuild(type:Exec) {
-	workingDir "."
+	workingDir dockerHome
 	commandLine './build.sh'
+}
+
+task dockerRun(type:Exec) {
+	workingDir dockerHome
+	commandLine './run.sh'
 }
