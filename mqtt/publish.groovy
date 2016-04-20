@@ -5,6 +5,7 @@ import org.fusesource.mqtt.client.MQTT
 import org.fusesource.mqtt.client.Message
 import org.fusesource.mqtt.client.QoS
 import org.fusesource.mqtt.client.Topic
+import groovy.json.*
 
 String host = args[0]
 MQTT mqtt = new MQTT()
@@ -19,6 +20,7 @@ println "Connected to ${host}"
 Topic[] topics = [new Topic("/topic", QoS.AT_MOST_ONCE)]
 byte[] qoses = subscriber.subscribe(topics)
 println "Subscribed to ${topics}"
+println qoses
 
 //start a publisher
 MQTT mqtt2 = new MQTT()
@@ -32,6 +34,9 @@ Message message = subscriber.receive()
 assert "/topic" == message.topic
 assert "Hello world!!" == new String(message.payload)
 message.ack()
+
+println message
+println new JsonBuilder( message ).toPrettyString()
 
 println "shutdown subscriber"
 subscriber.disconnect()
