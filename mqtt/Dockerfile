@@ -1,4 +1,4 @@
-FROM debian:jessie
+FROM resin/rpi-raspbian:jessie
 
 RUN apt-get update && apt-get install -y wget 
 RUN wget -q -O - https://repo.mosquitto.org/debian/mosquitto-repo.gpg.key | apt-key add - && \
