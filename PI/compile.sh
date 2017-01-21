@@ -1,2 +1,12 @@
 #!/bin/sh
-docker run --name rospiduino -h rospiduino -it -v /home/pi/rpd:/home/pi/rpd --group-add dialout --device=/dev/ttyACM0:/dev/ttyACM0:rw pablogn/rospiduino
+docker rm acompiler
+docker rmi arduino-compiler
+docker build -t arduino-compiler
+docker run 
+	--name acompiler /
+	-h acompiler /
+	-it /
+	-v /home/pi/rpd:/home/pi/rpd /
+	--group-add dialout /
+	--device=/dev/ttyUSB0:/dev/ttyUSB0:rw / 
+	arduino-compiler
