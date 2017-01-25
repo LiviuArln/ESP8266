@@ -2,5 +2,8 @@ FROM pablogn/rospiduino
 ADD heart.ino .
 ADD Makefile .
 ADD makeEspArduino.mk .
-RUN git clone https://github.com/esp8266/Arduino.git
+RUN mkdir -p /usr/share/arduino/hardware/esp8266com/esp8266
+RUN cd /usr/share/arduino/hardware/esp8266com/esp8266 && git clone https://github.com/esp8266/Arduino.git esp8266
+RUN cd /usr/share/arduino/hardware/esp8266com/esp8266/tools && python get.py
+
 
