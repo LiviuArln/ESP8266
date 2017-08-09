@@ -1,0 +1,24 @@
+version: "3"
+
+services:
+  jira:
+    image: cptactionhank/atlassian-jira-software:latest
+    ports:
+     - "80:8080"
+    links:
+     - jira-mysql:mysql
+     - jira-smtp:smtp
+    volumes:
+     - ./jira:/var/atlassian/jira
+  jira-mysql:
+    image: "mysql:latest"
+    volumes:
+     - ./mysql-data:/var/lib/mysql
+    environment:
+     - MYSQL_ROOT_PASSWORD=jiraroot 
+     - MYSQL_DATABASE=jira 
+     - MYSQL_USER=jira
+     - MYSQL_PASSWORD=jirasecret
+  jira-smtp:
+    image: "namshi/smtp"
+    
