@@ -1,2 +1,4 @@
+ docker run --detach --publish 80:8080 --volume /home/liviu/jira:/var/atlassian/jira --link jira-mysql:mysql --link jira-smtp:smtp cptactionhank/atlassian-jira-software:latest
+docker run --name jira-smtp -d namshi/smtp
+
 docker run --name jira-mysql -e MYSQL_ROOT_PASSWORD=jiraroot -e MYSQL_DATABASE=jira -e MYSQL_USER=jira -e MYSQL_PASSWORD=jirasecret -v /home/liviu/mysql-data:/var/lib/mysql -d mysql:latest
-sudo docker run --detach --publish 80:8080 --volume /home/liviu/jira:/var/atlassian/jira --link jira-mysql:mysql cptactionhank/atlassian-jira-software:latest
