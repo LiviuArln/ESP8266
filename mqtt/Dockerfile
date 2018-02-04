@@ -14,5 +14,5 @@ VOLUME ["/mqtt/config", "/mqtt/data", "/mqtt/log"]
 
 
 EXPOSE 1883 9001
-CMD /usr/sbin/mosquitto -c /mqtt/config/mosquitto.conf
+CMD /usr/sbin/mosquitto -v -c /mqtt/config/mosquitto.conf
 
